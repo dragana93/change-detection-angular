@@ -11,8 +11,22 @@ import { MessagesService } from '../messages.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewMessageComponent {
+
+  // private messageService = inject(MessagesService);
+  // enteredText = signal('');
+
+  // get debugOutput() {
+  //   console.log('[NewMessage] "debugOutput" binding re-evaluated.');
+  //   return 'NewMessage Component Debug Output';
+  // }
+
+  // onSubmit() {
+  //   this.messageService.addMessage(this.enteredText());
+  //   this.enteredText.set('');
+  // }
+
   private messageService = inject(MessagesService);
-  enteredText = signal('');
+  enteredText = '';
 
   get debugOutput() {
     console.log('[NewMessage] "debugOutput" binding re-evaluated.');
@@ -20,7 +34,7 @@ export class NewMessageComponent {
   }
 
   onSubmit() {
-    this.messageService.addMessage(this.enteredText());
-    this.enteredText.set('');
+    this.messageService.addMessage(this.enteredText);
+    this.enteredText = '';
   }
 }
